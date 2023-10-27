@@ -290,7 +290,7 @@ app.get("/api/places", async (req, res) => {
   res.json(await Place.find());
 });
 
-app.post("/bookings", async(req, res) => {
+app.post("/api/bookings", async(req, res) => {
   mongoose.connect(process.env.MONGO_URL);
  
   const userData = await getUserDataFromReq(req);
