@@ -21,6 +21,13 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "fasefraw4r5r3wq45wdfgw34twdfg";
 app.use(express.json());
 app.use(cookieParser());
+
+app.use((req, res, next) => {
+  res.setHeader('Referrer-Policy', 'no-referrer'); // or 'unsafe-url' to send the full URL
+  next();
+});
+
+
 app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(
   cors({
@@ -28,6 +35,7 @@ app.use(
     origin: "http://localhost:5173",
   })
 );
+
 //x2yNMwxMlZzYtynr
 console.log(process.env.MONGO_URL);
 
